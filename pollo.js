@@ -1,5 +1,7 @@
 var vp = document.getElementById("villapollo");
 var papel = vp.getContext("2d");
+var cerdo = document.getElementById("cerdo");
+var papelCerdo = cerdo.getContext("2d");
 var minimo = 0;
 var maximo = 7;
 
@@ -96,7 +98,11 @@ function dibujar()
         }
         
     }
-    papel.drawImage(cerdo, x, y);
+    dibujarCerdo()
+}
+
+function dibujarCerdo(){
+  papelCerdo.drawImage(cerdo, x, y);
 }
 
 function teclado(evento)
@@ -105,18 +111,22 @@ function teclado(evento)
     {
         case teclas.UP:
             //aquí algo par que borre cerdo(x, y);
+            papelCerdo.clearRect(x, y, 80, 80)
             moverCerdo(x, y - movimiento);
             y = y - movimiento;
         break;
         case teclas.DOWN:
+            papelCerdo.clearRect(x, y, 80, 80)
             moverCerdo(x, y + movimiento)
             y = y + movimiento;
         break;
         case teclas.LEFT:
+            papelCerdo.clearRect(x, y, 80, 80)
             moverCerdo(x - movimiento, y);
             x = x - movimiento;
         break;
         case teclas.RIGHT:
+            papelCerdo.clearRect(x, y, 80, 80)
             moverCerdo(x + movimiento, y);
             x = x + movimiento;
         break;
@@ -128,7 +138,7 @@ function teclado(evento)
 
 function moverCerdo(movX, movY)
 {
-    papel.drawImage(cerdo, movX, movY);
+  papelCerdo.drawImage(cerdo, movX, movY);
 }
 
 function aleatorio(min, max)
